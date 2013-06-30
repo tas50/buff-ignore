@@ -1,5 +1,10 @@
 Buff Ignore
 ===========
+[![Gem Version](https://badge.fury.io/rb/buff-ignore.png)](http://badge.fury.io/rb/buff-ignore)
+[![Build Status](https://travis-ci.org/sethvargo/buff-ignore.png)](https://travis-ci.org/sethvargo/buff-ignore)
+[![Dependency Status](https://gemnasium.com/sethvargo/buff-ignore.png)](https://gemnasium.com/sethvargo/buff-ignore)
+[![Code Climate](https://codeclimate.com/github/sethvargo/buff-ignore.png)](https://codeclimate.com/github/sethvargo/buff-ignore)
+
 Buff::Ignore is a Ruby helper library for parsing and managing an ignore file (such as a `.gitignore` or `chefignore`). It uses [`File#fnmatch`](http://www.ruby-doc.org/core-2.0/File.html#method-c-fnmatch). It includes helpful methods for apply ignores to a file list.
 
 
