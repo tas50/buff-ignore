@@ -7,11 +7,13 @@ module Buff::Ignore
     # @param [String] path
     #   the path where the ignore file was not found
     def initialize(path)
-      @path = File.expand_path(path)
+      @path = path
     end
 
     # @return [String]
-    def message
+    def to_s
+      "No ignore file found at '#{File.expand_path(@path)}'!"
+    rescue
       "No ignore file found at '#{@path}'!"
     end
   end

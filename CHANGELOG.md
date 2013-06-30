@@ -1,5 +1,8 @@
 CHANGELOG
 =========
+v1.0.3
+------
+- Use `#to_s` instead of message for a nicer output to the end-user when an ignore file is not found
 
 v1.0.2
 ------
