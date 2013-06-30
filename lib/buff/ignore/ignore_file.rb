@@ -19,8 +19,15 @@ module Buff
       #
       # @param [String, Pathname] filepath
       #   the path to the ignore file
-      def initialize(filepath)
+      # @param [Hash] options
+      #   a list of options to pass to the ignore file
+      #
+      # @option [#to_s] options :base
+      #   the base directory to apply ignores from
+      def initialize(filepath, options = {})
         @filepath = File.expand_path(filepath)
+        @options  = options
+
         raise IgnoreFileNotFound.new(filepath) unless File.exists?(filepath)
       end
 
@@ -57,12 +64,17 @@ module Buff
       end
 
       private
+        # The list of options
+        #
+        # @return [Hash]
+        attr_reader :options
+
         # The parsed contents of the ignore file
         #
         # @return [Array]
         def ignores
-          @ignores ||= File.readlines(filepath).reject do |line|
-            line.strip.empty? || line.strip =~ COMMENT_OR_WHITESPACE
+          @ignores ||= File.readlines(filepath).map(&:strip).reject do |line|
+            line.empty? || line =~ COMMENT_OR_WHITESPACE
           end
         end
 
@@ -74,7 +86,10 @@ module Buff
         # @return [Boolean]
         #   true if the file should be ignored, false otherwise
         def ignored?(filename)
-          ignores.any? { |ignore| File.fnmatch?(ignore, filename) }
+          base = File.expand_path(options[:base] || File.dirname(filepath))
+          basename = filename.sub(base + File::SEPARATOR, '')
+
+          ignores.any? { |ignore| File.fnmatch?(ignore, basename) }
         end
     end
   end
