@@ -5,7 +5,7 @@ require 'buff/ignore/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'buff-ignore'
-  spec.version       = '1.0.0'
+  spec.version       = Buff::Ignore::VERSION
   spec.authors       = ['Seth Vargo']
   spec.email         = ['sethvargo@gmail.com']
   spec.description   = 'Parse ignore files with Ruby'
