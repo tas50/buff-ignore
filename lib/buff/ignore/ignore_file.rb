@@ -63,6 +63,20 @@ module Buff
         end
       end
 
+      # Determine if a given filename should be ignored
+      #
+      # @param [String] filename
+      #   the file to match
+      #
+      # @return [Boolean]
+      #   true if the file should be ignored, false otherwise
+      def ignored?(filename)
+        base = File.expand_path(options[:base] || File.dirname(filepath))
+        basename = filename.sub(base + File::SEPARATOR, '')
+
+        ignores.any? { |ignore| File.fnmatch?(ignore, basename) }
+      end
+
       private
         # The list of options
         #
@@ -76,20 +90,6 @@ module Buff
           @ignores ||= File.readlines(filepath).map(&:strip).reject do |line|
             line.empty? || line =~ COMMENT_OR_WHITESPACE
           end
-        end
-
-        # Helper boolean to determine if a given filename should be ignored
-        #
-        # @param [String] filename
-        #   the file to match
-        #
-        # @return [Boolean]
-        #   true if the file should be ignored, false otherwise
-        def ignored?(filename)
-          base = File.expand_path(options[:base] || File.dirname(filepath))
-          basename = filename.sub(base + File::SEPARATOR, '')
-
-          ignores.any? { |ignore| File.fnmatch?(ignore, basename) }
         end
     end
   end

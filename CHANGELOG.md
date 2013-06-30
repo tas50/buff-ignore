@@ -1,5 +1,8 @@
 CHANGELOG
 =========
+v1.1.0
+------
+- Make `ignored?` a public function
 
 v1.0.4
 ------
