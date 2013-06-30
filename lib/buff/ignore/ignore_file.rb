@@ -17,10 +17,10 @@ module Buff
       # @raise [IgnoreFileNotFound]
       #   if the given filepath does not exist
       #
-      # @param [#to_s] filepath
+      # @param [String, Pathname] filepath
       #   the path to the ignore file
       def initialize(filepath)
-        @filepath = File.expand_path(filepath.to_s)
+        @filepath = File.expand_path(filepath)
         raise IgnoreFileNotFound.new(filepath) unless File.exists?(filepath)
       end
 
