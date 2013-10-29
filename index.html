@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Buff-ignore by sethvargo</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Buff-ignore</h1>
+        <h2>Buff::Ignore is a Ruby helper library for parsing and managing an ignore file</h2>
+        <a href="https://github.com/sethvargo/buff-ignore" class="button"><small>View project on</small>GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>
+<a name="buff-ignore" class="anchor" href="#buff-ignore"><span class="octicon octicon-link"></span></a>Buff Ignore</h1>
+
+<p><a href="http://badge.fury.io/rb/buff-ignore"><img src="https://badge.fury.io/rb/buff-ignore.png" alt="Gem Version"></a>
+<a href="https://travis-ci.org/sethvargo/buff-ignore"><img src="https://travis-ci.org/sethvargo/buff-ignore.png" alt="Build Status"></a>
+<a href="https://gemnasium.com/sethvargo/buff-ignore"><img src="https://gemnasium.com/sethvargo/buff-ignore.png" alt="Dependency Status"></a>
+<a href="https://codeclimate.com/github/sethvargo/buff-ignore"><img src="https://codeclimate.com/github/sethvargo/buff-ignore.png" alt="Code Climate"></a></p>
+
+<p>Buff::Ignore is a Ruby helper library for parsing and managing an ignore file (such as a <code>.gitignore</code> or <code>chefignore</code>). It uses <a href="http://www.ruby-doc.org/core-2.0/File.html#method-c-fnmatch"><code>File#fnmatch</code></a>. It includes helpful methods for apply ignores to a file list.</p>
+
+<h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>Add buff-ignore to your <code>Gemfile</code>:</p>
+
+<pre lang="Gemfile"><code>gem 'buff-ignore'
+</code></pre>
+
+<p>And then execute the <code>bundle</code> command to install:</p>
+
+<pre><code>$ bundle
+</code></pre>
+
+<p>Or install buff-ignore directly:</p>
+
+<pre><code>$ gem install buff-ignore
+</code></pre>
+
+<h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>Buff::Ignore is designed to be used as a library. First, you must require it:</p>
+
+<div class="highlight highlight-ruby"><pre><span class="nb">require</span> <span class="s1">'buff/ignore'</span>
+</pre></div>
+
+<p>Next, create an instance of an ignore file:</p>
+
+<div class="highlight highlight-ruby"><pre><span class="n">ignore</span> <span class="o">=</span> <span class="ss">Buff</span><span class="p">:</span><span class="ss">:Ignore</span><span class="o">::</span><span class="no">IgnoreFile</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">'/path/to/ignore/file'</span><span class="p">)</span>
+</pre></div>
+
+<p><em>(If the file does not exist, an exception will be raised)</em></p>
+
+<p>Finally, apply the <code>ignore</code> to a list of files:</p>
+
+<div class="highlight highlight-ruby"><pre><span class="n">list</span> <span class="o">=</span> <span class="no">Dir</span><span class="o">[</span><span class="s1">'**/*'</span><span class="o">]</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">ignore</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">list</span><span class="p">)</span>
+</pre></div>
+
+<p>You can also destructively apply changes. This will modify the receiving argument <code>list</code>:</p>
+
+<div class="highlight highlight-ruby"><pre><span class="n">ignore</span><span class="o">.</span><span class="n">apply!</span><span class="p">(</span><span class="n">list</span><span class="p">)</span>
+</pre></div>
+
+<h2>
+<a name="contributing" class="anchor" href="#contributing"><span class="octicon octicon-link"></span></a>Contributing</h2>
+
+<ol>
+<li>Fork it</li>
+<li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li>
+<li>Commit your changes (<code>git commit -am 'Add some feature'</code>)</li>
+<li>Push to the branch (<code>git push origin my-new-feature</code>)</li>
+<li>Create new Pull Request</li>
+</ol><h2>
+<a name="license--authors" class="anchor" href="#license--authors"><span class="octicon octicon-link"></span></a>License &amp; Authors</h2>
+
+<ul>
+<li>Author: Seth Vargo (<a href="mailto:sethvargo@gmail.com">sethvargo@gmail.com</a>)</li>
+</ul><div class="highlight highlight-text"><pre>Copyright 2013 Seth Vargo &lt;sethvargo@gmail.com&gt;
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+</pre></div>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/sethvargo/buff-ignore/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/sethvargo/buff-ignore/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/sethvargo/buff-ignore"></a> is maintained by <a href="https://github.com/sethvargo">sethvargo</a>.</p>
+
+          <p>This page was generated by <a href="pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
