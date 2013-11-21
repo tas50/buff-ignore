@@ -12,6 +12,14 @@ describe Buff::Ignore::IgnoreFile do
   subject { described_class.new(path) }
 
   describe '.initialize' do
+    context 'when the filepath is nil' do
+      it 'raises an exception' do
+        expect {
+          described_class.new(nil)
+        }.to raise_error(Buff::Ignore::IgnoreFileNotFound)
+      end
+    end
+
     context 'when the filepath does not exist' do
       before { File.stub(:exists?).and_return(false) }
 

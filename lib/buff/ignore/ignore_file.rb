@@ -25,10 +25,10 @@ module Buff
       # @option [#to_s] options :base
       #   the base directory to apply ignores from
       def initialize(filepath, options = {})
+        raise IgnoreFileNotFound.new(filepath) unless filepath && File.exists?(filepath)
+
         @filepath = File.expand_path(filepath)
         @options  = options
-
-        raise IgnoreFileNotFound.new(filepath) unless File.exists?(filepath)
       end
 
       # Apply the ignore to the list, returning a new list of filtered files

@@ -16,7 +16,11 @@ describe Buff::Ignore::IgnoreFileNotFound do
     }.to_not raise_error
   end
 
-  it 'has the correct message' do
-    expect(subject.message).to eq("No ignore file found at '#{path}'!")
+  context 'when path is nil' do
+    let(:path) { nil }
+
+    it 'has the correct message' do
+      expect(subject.message).to eq("No ignore file found at ''!")
+    end
   end
 end
