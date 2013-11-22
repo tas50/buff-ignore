@@ -1,5 +1,11 @@
 CHANGELOG
 =========
+
+
+v1.1.1
+------
+- Handle nil file paths
+
 v1.1.0
 ------
 - Make `ignored?` a public function
