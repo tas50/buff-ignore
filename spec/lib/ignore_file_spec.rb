@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Buff::Ignore::IgnoreFile do
-  let(:ignores) { %w(Gemfile *.lock bacon) }
+  let(:ignores) { %w(Gemfile *.lock bacon README.*) }
   let(:path) { '~/fakepath' }
 
   before do
@@ -56,7 +56,7 @@ describe Buff::Ignore::IgnoreFile do
   end
 
   describe '#apply!' do
-    let(:list) { ['Gemfile', 'Gemfile.lock', 'bacon', 'eggs'] }
+    let(:list) { ['Gemfile', 'Gemfile.lock', 'bacon', 'eggs', File.expand_path('~') + '/fakepath/README.md'] }
 
     it 'removes standard files' do
       subject.apply!(list)
@@ -67,6 +67,7 @@ describe Buff::Ignore::IgnoreFile do
     it 'removes the globs' do
       subject.apply!(list)
       expect(list).to_not include('Gemfile.lock')
+      expect(list).to_not include(File.expand_path('~') + '/fakepath/README.md')
     end
 
     it 'does not remove a non-matching pattern' do

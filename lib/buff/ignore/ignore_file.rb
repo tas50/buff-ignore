@@ -71,7 +71,7 @@ module Buff
       # @return [Boolean]
       #   true if the file should be ignored, false otherwise
       def ignored?(filename)
-        base = File.expand_path(options[:base] || File.dirname(filepath))
+        base = File.expand_path(options[:base] || filepath)
         basename = filename.sub(base + File::SEPARATOR, '')
 
         ignores.any? { |ignore| File.fnmatch?(ignore, basename) }
