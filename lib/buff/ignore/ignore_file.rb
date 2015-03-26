@@ -29,6 +29,9 @@ module Buff
 
         @filepath = File.expand_path(filepath)
         @options  = options
+        if @options[:base].nil?
+          @options[:base] = File.directory?(filepath) ? filepath : File.dirname(filepath)
+        end
       end
 
       # Apply the ignore to the list, returning a new list of filtered files
@@ -71,7 +74,7 @@ module Buff
       # @return [Boolean]
       #   true if the file should be ignored, false otherwise
       def ignored?(filename)
-        base = File.expand_path(options[:base] || filepath)
+        base = File.expand_path(options[:base] || File.dirname(filepath))
         basename = filename.sub(base + File::SEPARATOR, '')
 
         ignores.any? { |ignore| File.fnmatch?(ignore, basename) }

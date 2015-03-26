@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Buff::Ignore::IgnoreFile do
   let(:ignores) { %w(Gemfile *.lock bacon README.*) }
-  let(:path) { '~/fakepath' }
+  let(:path) { '~/fakepath/fakefile' }
 
   before do
     File.stub(:exists?).with(path).and_return(true)
