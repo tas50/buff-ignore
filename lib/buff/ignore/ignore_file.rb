@@ -29,6 +29,9 @@ module Buff
 
         @filepath = File.expand_path(filepath)
         @options  = options
+        if @options[:base].nil?
+          @options[:base] = File.directory?(filepath) ? filepath : File.dirname(filepath)
+        end
       end
 
       # Apply the ignore to the list, returning a new list of filtered files
