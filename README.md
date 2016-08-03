@@ -1,32 +1,31 @@
-Buff Ignore
-===========
-[![Gem Version](https://badge.fury.io/rb/buff-ignore.png)](http://badge.fury.io/rb/buff-ignore)
-[![Build Status](https://travis-ci.org/sethvargo/buff-ignore.png)](https://travis-ci.org/sethvargo/buff-ignore)
-[![Dependency Status](https://gemnasium.com/sethvargo/buff-ignore.png)](https://gemnasium.com/sethvargo/buff-ignore)
-[![Code Climate](https://codeclimate.com/github/sethvargo/buff-ignore.png)](https://codeclimate.com/github/sethvargo/buff-ignore)
+# Buff Ignore
+
+[![Gem Version](https://badge.fury.io/rb/buff-ignore.svg)](http://badge.fury.io/rb/buff-ignore) [![Build Status](https://travis-ci.org/sethvargo/buff-ignore.svg)](https://travis-ci.org/sethvargo/buff-ignore) [![Dependency Status](https://gemnasium.com/sethvargo/buff-ignore.svg)](https://gemnasium.com/sethvargo/buff-ignore) [![Code Climate](https://codeclimate.com/github/sethvargo/buff-ignore.svg)](https://codeclimate.com/github/sethvargo/buff-ignore)
 
 Buff::Ignore is a Ruby helper library for parsing and managing an ignore file (such as a `.gitignore` or `chefignore`). It uses [`File#fnmatch`](http://www.ruby-doc.org/core-2.0/File.html#method-c-fnmatch). It includes helpful methods for apply ignores to a file list.
 
+## Installation
 
-Installation
-------------
 Add buff-ignore to your `Gemfile`:
 
-```Gemfile
+```gemfile
 gem 'buff-ignore'
 ```
 
 And then execute the `bundle` command to install:
 
-    $ bundle
+```
+$ bundle
+```
 
 Or install buff-ignore directly:
 
-    $ gem install buff-ignore
+```
+$ gem install buff-ignore
+```
 
+## Usage
 
-Usage
------
 Buff::Ignore is designed to be used as a library. First, you must require it:
 
 ```ruby
@@ -39,7 +38,7 @@ Next, create an instance of an ignore file:
 ignore = Buff::Ignore::IgnoreFile.new('/path/to/ignore/file')
 ```
 
-*(If the file does not exist, an exception will be raised)*
+_(If the file does not exist, an exception will be raised)_
 
 Finally, apply the `ignore` to a list of files:
 
@@ -54,17 +53,16 @@ You can also destructively apply changes. This will modify the receiving argumen
 ignore.apply!(list)
 ```
 
-Contributing
-------------
+## Contributing
+
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
 
+## License & Authors
 
-License & Authors
------------------
 - Author: Seth Vargo (sethvargo@gmail.com)
 
 ```text
